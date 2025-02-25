@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title>Gravity models</title>
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/simple.css" id="theme" />
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" />
+	<link rel="stylesheet" href="css/layout.css" />
+	<link rel="stylesheet" href="plugin/customcontrols/style.css">
+
+	<link rel="stylesheet" href="plugin/reveal-pointer/pointer.css" />
+
+
+    <script defer src="dist/fontawesome/all.min.js"></script>
+
+	<script type="text/javascript">
+		var forgetPop = true;
+		function onPopState(event) {
+			if(forgetPop){
+				forgetPop = false;
+			} else {
+				parent.postMessage(event.target.location.href, "app://obsidian.md");
+			}
+        }
+		window.onpopstate = onPopState;
+		window.onmessage = event => {
+			if(event.data == "reload"){
+				window.document.location.reload();
+			}
+			forgetPop = true;
+		}
+
+		function fitElements(){
+			const itemsToFit = document.getElementsByClassName('fitText');
+			for (const item in itemsToFit) {
+				if (Object.hasOwnProperty.call(itemsToFit, item)) {
+					var element = itemsToFit[item];
+					fitElement(element,1, 1000);
+					element.classList.remove('fitText');
+				}
+			}
+		}
+
+		function fitElement(element, start, end){
+
+			let size = (end + start) / 2;
+			element.style.fontSize = `${size}px`;
+
+			if(Math.abs(start - end) < 1){
+				while(element.scrollHeight > element.offsetHeight){
+					size--;
+					element.style.fontSize = `${size}px`;
+				}
+				return;
+			}
+
+			if(element.scrollHeight > element.offsetHeight){
+				fitElement(element, start, size);
+			} else {
+				fitElement(element, size, end);
+			}		
+		}
+
+
+		document.onreadystatechange = () => {
+			fitElements();
+			if (document.readyState === 'complete') {
+				if (window.location.href.indexOf("?export") != -1){
+					parent.postMessage(event.target.location.href, "app://obsidian.md");
+				}
+				if (window.location.href.indexOf("print-pdf") != -1){
+					let stateCheck = setInterval(() => {
+						clearInterval(stateCheck);
+						window.print();
+					}, 250);
+				}
+			}
+	};
+
+
+        </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides"><section  data-markdown><script type="text/template"><!-- .slide: class="drop" template="tpl-con-title" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Gravity models
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="padding: 0 10px; box-sizing: border-box; position: absolute; left: 0%; top: 0%; height: 20%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="topcenter">
+
+## First law of geography
+</div>
+
+The first law of geography was developed by Waldo Tobler in 1970 and it makes the observation that <mark style="background: #ADCCFFA6;">**‘everything is usually related to all else but those which are near to each other are more related when compared to those that are further away’.**</mark>
+
+
+<div class="" style="padding: 0 10px; box-sizing: border-box; position: absolute; left: 0%; top: 64%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+https://www.geographyrealm.com/toblers-first-law-geography/ <!-- .element: style="font-size: 15px" -->
+</div>
+
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+© 2025 Балтыжакова Т.И.<!-- .element: style="font-size: 10px" -->
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" template="tpl-con-default-box" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+</div>
+
+ 
+## Distance decay 
+
+
+</div>
+
+ <!-- .element: style="font-size: 70px; font-weight: 600; line-height: 1.7" -->
+
+<div class="block">
+
+The further apart two places or populations are, the lower the probability it is that they will interact. This phenomenon is known as **distance decay**.
+
+<mark style="background: #ADCCFFA6;">Distance decay, in its simplest form, shows how commonalities degrade with increasing distance.</mark>
+ 
+ </div>
+
+<!-- .element: style="font-size: 40px; line-height: 1.7; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center" -->
+
+<div class="" style="padding: 0 10px; box-sizing: border-box; position: absolute; left: 0%; top: 70%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+https://www.geographyrealm.com/distance-decay-in-geography/ <!-- .element: style="font-size: 15px" -->
+</div>
+
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+© 2025 Балтыжакова Т.И.<!-- .element: style="font-size: 10px" -->
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="Преподавание/Пространственный анализ/Картинки для лекций/Pasted image 20241024102337.png" alt="" style="object-fit: scale-down">
+
+
+<div class="" style="padding: 0 10px; box-sizing: border-box; position: absolute; left: 0%; top: 70%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+https://www.geographyrealm.com/distance-decay-in-geography/ <!-- .element: style="font-size: 15px" -->
+</div>
+
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+© 2025 Балтыжакова Т.И.<!-- .element: style="font-size: 10px" -->
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="Преподавание/Пространственный анализ/Картинки для лекций/Pasted image 20241024102355.png" alt="" style="object-fit: scale-down">
+
+
+<div class="" style="padding: 0 10px; box-sizing: border-box; position: absolute; left: 0%; top: 70%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+https://www.geographyrealm.com/distance-decay-in-geography/ <!-- .element: style="font-size: 15px" -->
+</div>
+
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+© 2025 Балтыжакова Т.И.<!-- .element: style="font-size: 10px" -->
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+</div>
+
+
+## Time-space compression
+</div>
+
+<!-- .element: style="font-size: 70px; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center" -->
+
+<div class="block">
+
+We can think of **_time-space compression_** as a factor that reduces the impact of distance decay. 
+
+For example, _wealth, technology, and transportation systems can reduce the impact of distance decay._
+</div>
+
+<!-- .element: style="font-size: 45px; line-height: 1.7; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left" -->
+
+<div class="" style="padding: 0 10px; box-sizing: border-box; position: absolute; left: 0%; top: 70%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+http://gisgeography.com/distance-decay/ <!-- .element: style="font-size: 15px" -->
+</div>
+
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+© 2025 Балтыжакова Т.И.<!-- .element: style="font-size: 10px" -->
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="Преподавание/Пространственный анализ/Картинки для лекций/Pasted image 20241025093954.png" alt="" style="object-fit: scale-down">
+
+
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+© 2025 Балтыжакова Т.И.<!-- .element: style="font-size: 10px" -->
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+</div>
+
+
+## Reilly's law of retail gravitation
+</div>
+
+<!-- .element: style="font-size: 60px; line-height: 1.7; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center" -->
+
+<div class="block">
+
+The attractiveness of the retail center becomes the <mark style="background: #ADCCFFA6;">analogy for size (mass) in the physical law of gravity.</mark>
+</div>
+
+<!-- .element: style="font-size: 40px; line-height: 1.7; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center" -->
+
+<div class="" style="padding: 0 10px; box-sizing: border-box; position: absolute; left: 0%; top: 40%; height: 50%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center">
+
+<img src="Pasted image 20250225113035.png" alt="" style="object-fit: scale-down">
+
+</div>
+
+<div class="" style="padding: 0 10px; box-sizing: border-box; position: absolute; left: 0%; top: 70%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+https://transportgeography.org/contents/methods/market-area-analysis/reilly-law-retail/ <!-- .element: style="font-size: 15px" -->
+</div>
+
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+© 2025 Балтыжакова Т.И.<!-- .element: style="font-size: 10px" -->
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+</div>
+
+
+## Reilly's gravity model
+</div>
+
+<!-- .element: style="font-size: 70px; line-height: 1.7; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center" -->
+
+<div class="block">
+
+retail centers _attract customers from nearby cities_ in direct proportion to population of the city and in inverse proportion to distance between the cities.
+</div>
+
+<!-- .element: style="font-size: 30px; line-height: 1.7; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left" -->
+
+<div class="block">
+
+<div class="callout callout-color2">
+<div class="callout-title">
+<div class="callout-icon">
+
+<i class="fas fa-fire-alt" ></i>
+
+
+</div>
+<div class="callout-title-inner">
+
+The larger a city, the larger a trade area it would have and thus it would draw from a larger hinterland around the city. 
+
+</div>
+</div>
+<div class="callout-content">
+
+Two cities of equal size have a trade area boundary midway between the two cities. When cities are of unequal size, the boundary lies closer to the smaller city, giving the larger city a larger trade area.
+
+</div>
+</div>
+
+</div>
+
+ <!-- .element: style="font-size: 20px; line-height: 1.7; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-evenly" align="left" -->
+
+
+<div class="" style="padding: 0 10px; box-sizing: border-box; position: absolute; left: 0%; top: 70%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+https://www.thoughtco.com/reillys-law-of-retail-gravitation-1433438 <!-- .element: style="font-size: 15px" -->
+</div>
+
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+© 2025 Балтыжакова Т.И.<!-- .element: style="font-size: 10px" -->
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+</div>
+
+
+## Reilly's gravity model
+</div>
+
+<!-- .element: style="font-size: 60px; line-height: 1.7; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center" -->
+
+<div class="block">
+
+`$\frac{B_{a}}{B_{b}} = \frac{P_{a}}{P_{b}}*(\frac{D_{b}}{D_{a}})^2$`,
+
+</div>
+
+ <!-- .element: style="font-size: 40px; line-height: 1.7; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center" -->
+
+<div class="block">
+
+- `$B_{i}$` - number of customers attracted from some town to retail center 𝑖;
+- `$P_{i}$` - population of town `$i$`, associated with the retail center; 
+- `$D_{i}$` - distance from some town to retail center 𝑖.
+</div>
+
+ <!-- .element: style="font-size: 30px; line-height: 1.7; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center" -->
+
+<div class="" style="padding: 0 10px; box-sizing: border-box; position: absolute; left: 0%; top: 70%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+https://www.aabri.com/manuscripts/09219.pdf <!-- .element: style="font-size: 15px" -->
+</div>
+
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+© 2025 Балтыжакова Т.И.<!-- .element: style="font-size: 10px" -->
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="Преподавание/Пространственный анализ/Картинки для лекций/Pasted image 20241024120705.png" alt="" style="object-fit: scale-down">
+
+
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+© 2025 Балтыжакова Т.И.<!-- .element: style="font-size: 10px" -->
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+</div>
+
+
+##  Converse's breaking point model
+</div>
+
+<!-- .element: style="font-size: 50px; line-height: 1.7; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center" -->
+
+<div class="block">
+
+`$D_{a \xrightarrow{ }b} = \frac{d}{1+\sqrt{\frac{P_{b}}{P_{a}}}}$`,
+
+</div>
+
+ <!-- .element: style="font-size: 35px; line-height: 1.7; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center" -->
+
+<div class="block">
+
+- `$D_{a \xrightarrow{ }b}$` - breaking point from town `$a$` to town `$b$`;
+- `$d$` - distance between 𝑎 and 𝑏;
+- `$P_{i}$`- population of town 𝑖, associated with the retail center.
+</div>
+
+ <!-- .element: style="font-size: 30px; line-height: 1.7; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center" -->
+
+<div class="" style="padding: 0 10px; box-sizing: border-box; position: absolute; left: 0%; top: 70%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+https://www.aabri.com/manuscripts/09219.pdf <!-- .element: style="font-size: 15px" -->
+</div>
+
+
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+© 2025 Балтыжакова Т.И.<!-- .element: style="font-size: 10px" -->
+</div>
+
+<div class="" style="padding: 0 10px; box-sizing: border-box; position: absolute; left: 20%; top: 60%; height: 35%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+<img src="Преподавание/Пространственный анализ/Картинки для лекций/Pasted image 20241024121809.png" alt="" style="object-fit: scale-down">
+
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+</div>
+
+
+## Converse's breaking point model
+</div>
+
+<!-- .element: style="font-size: 40px; line-height: 1.7; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center" -->
+
+<div class="block">
+
+`$\frac{B_{a}}{B_{b}} = \frac{P_{a}}{H_{b}}*(\frac{4}{d})^2$`,
+
+</div>
+
+ <!-- .element: style="font-size: 45px; line-height: 1.7; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center" -->
+
+<div class="block">
+
+- `$B_{a}$` - portion of customers drawn out of town;
+- `$B_{b}$` - portion of customers left within town;
+- `$P_{a}$` - population of town where people get attracted to;
+- `$H_{b}$` - town population;
+- `$d$` - distance between towns;
+- 4 -  inertia factor.
+</div>
+
+ <!-- .element: style="font-size: 30px; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center" -->
+
+<div class="" style="padding: 0 10px; box-sizing: border-box; position: absolute; left: 0%; top: 70%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+https://www.aabri.com/manuscripts/09219.pdf <!-- .element: style="font-size: 15px" -->
+</div>
+
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+© 2025 Балтыжакова Т.И.<!-- .element: style="font-size: 10px" -->
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="block">
+
+<div class="callout callout-color-default">
+<div class="callout-title">
+<div class="callout-icon">
+
+<i class="fas fa-pencil-alt" ></i>
+
+
+</div>
+<div class="callout-title-inner">
+
+Retail center and the town within its retail zone or close to it divide all retail in direct proportion to towns population and in inverse proportion to squared distance with 4 as a factor of distance inertia. 
+
+</div>
+</div>
+<div class="callout-content">
+
+</div>
+</div>
+</div>
+
+ <!-- .element: style="font-size: 24px; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center" -->
+
+<img src="Преподавание/Пространственный анализ/Картинки для лекций/Pasted image 20241024122712.png" alt="" style="object-fit: scale-down">
+
+
+<div class="" style="padding: 0 10px; box-sizing: border-box; position: absolute; left: 0%; top: 70%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+https://www.aabri.com/manuscripts/09219.pdf <!-- .element: style="font-size: 15px" -->
+</div>
+
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+© 2025 Балтыжакова Т.И.<!-- .element: style="font-size: 10px" -->
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+</div>
+
+
+##  “Inverted” Converse Breaking-Point Model (Mayer-Mason model)
+</div>
+
+<!-- .element: style="font-size: 40px; line-height: 1.7; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center" -->
+
+<div class="block">
+
+`$D_{a \xrightarrow{ }b} = \frac{d}{1+\sqrt{\frac{P_{a}}{P_{b}}}}$`,
+
+</div>
+
+ <!-- .element: style="font-size: 35px; line-height: 1.7; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center" -->
+
+<div class="block">
+
+The idea is that with increase of transport accessibility in modern world potential customer can more easy travel further to get services he needs.
+
+<div class="callout callout-color-default">
+<div class="callout-title">
+<div class="callout-icon">
+
+<i class="fas fa-pencil-alt" ></i>
+
+
+</div>
+<div class="callout-title-inner">
+
+Inverse model is more suitable for small towns because of the increased attraction radius then in big cities. 
+
+</div>
+</div>
+<div class="callout-content">
+
+</div>
+</div>
+</div>
+
+ <!-- .element: style="font-size: 32px; line-height: 1.7; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center" -->
+
+<div class="" style="padding: 0 10px; box-sizing: border-box; position: absolute; left: 0%; top: 70%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+https://www.aabri.com/manuscripts/09219.pdf <!-- .element: style="font-size: 15px" -->
+</div>
+
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+© 2025 Балтыжакова Т.И.<!-- .element: style="font-size: 10px" -->
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+</div>
+
+
+##  Huff's gravity model 
+</div>
+
+<!-- .element: style="font-size: 50px; line-height: 1.7; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center" -->
+  
+<div class="block">
+
+`$P_{ij} = \frac{\frac{S_{j}}{T^\lambda_{ij}}}{\sum_{j}^{n}\frac{S_{j}}{T^\lambda_{ij}}}$`,
+</div>
+
+ <!-- .element: style="font-size: 40px; line-height: 1.7; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center" -->
+<div class="block">
+
+- `$P_{ij}$` - probability of customer from location `$i$` going to shop `$j$`;
+- `$S_{j}$` - square area of shop `$j$`;
+- `$T_{ij}$` - time/distance which customer have to travel in order to get to the shop;
+- `$\lambda$` - empirical parameter reflecting influence of travel time on customer.
+</div>
+
+ <!-- .element: style="font-size: 34px; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center" -->
+
+<div class="" style="padding: 0 10px; box-sizing: border-box; position: absolute; left: 0%; top: 70%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+https://www.aabri.com/manuscripts/09219.pdf <!-- .element: style="font-size: 15px" -->
+</div>
+
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+© 2025 Балтыжакова Т.И.<!-- .element: style="font-size: 10px" -->
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="block">
+
+`$E_{ij} = P_{ij}C_{i}$`,
+</div>
+
+ <!-- .element: style="font-size: 50px; line-height: 1.7; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center" -->
+<div class="block">
+
+- `$E_{ij}$` -  potential number of customers for shop `$j$`  from location `$i$`;
+- `$P_{ij}$` - probability of customer from location `$i$` going to shop `$j$`;
+- `$C_{i}$` - total number of potential customers in location `$i$`.
+</div>
+
+ <!-- .element: style="font-size: 40px; display: flex; flex-direction: column; align-items: center; justify-content: center" align="center" -->
+
+<div class="" style="padding: 0 10px; box-sizing: border-box; position: absolute; left: 0%; top: 70%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+https://www.aabri.com/manuscripts/09219.pdf <!-- .element: style="font-size: 15px" -->
+</div>
+
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+© 2025 Балтыжакова Т.И.<!-- .element: style="font-size: 10px" -->
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+Huff's model predicts traffic of customers between two points (many points in general case) based on number of potential customers in each retail point and **inversely proportional distance factor or travel time between points** 
+
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+© 2025 Балтыжакова Т.И.<!-- .element: style="font-size: 10px" -->
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+Model also creates new concept of "attractiveness" which is measured as probability of customer visiting certain location given equal external conditions.
+
+<div class="callout callout-color2">
+<div class="callout-title">
+<div class="callout-icon">
+
+<i class="fas fa-fire-alt" ></i>
+
+
+</div>
+<div class="callout-title-inner">
+
+This attractiveness can be measured using different factors:
+
+</div>
+</div>
+<div class="callout-content">
+
+internal parameters of retail point (cleanliness, queues, assortment of products) or economic activity in location `$i$`, accessibility of services and overall attractiveness of location.
+
+</div>
+</div>
+
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+© 2025 Балтыжакова Т.И.<!-- .element: style="font-size: 10px" -->
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+One of key features of Huff's model - inclusion of so called <mark style="background: #BBFABBA6;">"gravity potential".</mark>
+
+**Which is a measure of all gravitational forces in certain place.**
+
+<div class="" style="padding: 0 10px; box-sizing: border-box; position: absolute; left: 0%; top: 70%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+https://habr.com/ru/companies/magnit/articles/717536/ <!-- .element: style="font-size: 15px" -->
+</div>
+
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+© 2025 Балтыжакова Т.И.<!-- .element: style="font-size: 10px" -->
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="callout callout-color5">
+<div class="callout-title">
+<div class="callout-icon">
+
+<i class="fas fa-exclamation-triangle" ></i>
+
+
+</div>
+<div class="callout-title-inner">
+
+Assumption is that traffic is the traffic is homogeneous, the people or the goods are the only factors to be taken into account and only the distance has an effect on the flow.
+
+</div>
+</div>
+<div class="callout-content">
+
+Complex influence of other factors included in <mark style="background: #FFB86CA6;">integral coefficient of point attractiveness</mark> and calculation of this influence is one of the most difficult tasks in calibrating the model.
+
+</div>
+</div>
+
+<div class="" style="padding: 0 10px; box-sizing: border-box; position: absolute; left: 0%; top: 70%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+https://habr.com/ru/companies/magnit/articles/717536/ <!-- .element: style="font-size: 15px" -->
+</div>
+
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+© 2025 Балтыжакова Т.И.<!-- .element: style="font-size: 10px" -->
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<mark style="background: #ABF7F7A6;">Bigger the shop is more attractive it will be to potential customers, more gravitational force it will have.</mark>
+
+Thus **retail area becomes a quantitative metric for variety of products**. Attractiveness of retail and brand can be adjusted with additional coefficients describing specific research area. 
+
+<div class="" style="padding: 0 10px; box-sizing: border-box; position: absolute; left: 0%; top: 70%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+https://habr.com/ru/companies/magnit/articles/717536/ <!-- .element: style="font-size: 15px" -->
+</div>
+
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+© 2025 Балтыжакова Т.И.<!-- .element: style="font-size: 10px" -->
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="" style="position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<img src="Преподавание/Пространственный анализ/Картинки для лекций/Pasted image 20241024130805.png" alt="" style="object-fit: scale-down">
+
+<!-- .element: class="fragment" data-fragment-index="1" -->
+</div>
+
+<div class="" style="position: absolute; left: 0%; top: 0%; height: 100%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+<img src="Преподавание/Пространственный анализ/Картинки для лекций/Pasted image 20241024182328.png" alt="" style="object-fit: scale-down" class="fragment" data-fragment-index="2">
+
+</div>
+
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+© 2025 Балтыжакова Т.И.<!-- .element: style="font-size: 10px" -->
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="Преподавание/Пространственный анализ/Картинки для лекций/Pasted image 20241024132402.png" alt="" style="object-fit: scale-down">
+
+
+<div class="" style="padding: 0 10px; box-sizing: border-box; position: absolute; left: 0%; top: 70%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+https://gisgeography.com/huff-gravity-model/ <!-- .element: style="font-size: 15px" -->
+</div>
+
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+© 2025 Балтыжакова Т.И.<!-- .element: style="font-size: 10px" -->
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="Преподавание/Пространственный анализ/Картинки для лекций/Pasted image 20241024132417.png" alt="" style="object-fit: scale-down">
+
+
+<div class="" style="padding: 0 10px; box-sizing: border-box; position: absolute; left: 0%; top: 70%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+https://gisgeography.com/huff-gravity-model/ <!-- .element: style="font-size: 15px" -->
+</div>
+
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+© 2025 Балтыжакова Т.И.<!-- .element: style="font-size: 10px" -->
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+## Использование балла Хаффа в «Магните»<!-- .element: style="font-size: 45px" -->
+
+Для решения наших задач мы работаем с данными по домам и графами дорог. Мы используем коммерческие и бесплатные источники геоданных, которые приоритезируются в зависимости от качества, актуальности, покрытия.
+
+
+<div class="" style="padding: 0 10px; box-sizing: border-box; position: absolute; left: 0%; top: 70%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+https://habr.com/ru/companies/magnit/articles/717536/<!-- .element: style="font-size: 15px" -->
+</div>
+
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+© 2025 Балтыжакова Т.И.<!-- .element: style="font-size: 10px" -->
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="Преподавание/Пространственный анализ/Картинки для лекций/Pasted image 20241024132147.png" alt="" style="object-fit: scale-down">
+
+
+<div class="" style="padding: 0 10px; box-sizing: border-box; position: absolute; left: 0%; top: 70%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+https://habr.com/ru/companies/magnit/articles/717536/<!-- .element: style="font-size: 15px" -->
+</div>
+
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+© 2025 Балтыжакова Т.И.<!-- .element: style="font-size: 10px" -->
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+Затем рассчитываем расстояния и штрафы. 
+
+Для расчёта пешеходного трафика в модели Хаффа используется соответствующий граф дорог. При этом для симуляции затрат времени на переход покупателем дорог используются дополнительные «штрафные» расстояния, тем самым здания через дорогу оказываются дальше, чем аналогичные в плане расстояния дома на той стороне дороги. Данные «штрафы» откалиброваны в результате работы команды продукта в «полях».
+
+<div class="" style="padding: 0 10px; box-sizing: border-box; position: absolute; left: 0%; top: 70%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+https://habr.com/ru/companies/magnit/articles/717536/<!-- .element: style="font-size: 15px" -->
+</div>
+
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+© 2025 Балтыжакова Т.И.<!-- .element: style="font-size: 10px" -->
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="Преподавание/Пространственный анализ/Картинки для лекций/Pasted image 20241024132224.png" alt="" style="object-fit: scale-down">
+
+
+<div class="" style="padding: 0 10px; box-sizing: border-box; position: absolute; left: 0%; top: 70%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+https://habr.com/ru/companies/magnit/articles/717536/<!-- .element: style="font-size: 15px" -->
+</div>
+
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+© 2025 Балтыжакова Т.И.<!-- .element: style="font-size: 10px" -->
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<img src="Преподавание/Пространственный анализ/Картинки для лекций/Pasted image 20241024132234.png" alt="" style="object-fit: scale-down">
+
+
+<div class="" style="padding: 0 10px; box-sizing: border-box; position: absolute; left: 0%; top: 70%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+https://habr.com/ru/companies/magnit/articles/717536/<!-- .element: style="font-size: 15px" -->
+</div>
+
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+© 2025 Балтыжакова Т.И.<!-- .element: style="font-size: 10px" -->
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+<div class="callout callout-color5">
+<div class="callout-title">
+<div class="callout-icon">
+
+<i class="fas fa-exclamation-triangle" ></i>
+
+
+</div>
+<div class="callout-title-inner">
+
+Probabilistic nature of the indicator adds certain difficulties in interpretation
+
+</div>
+</div>
+<div class="callout-content">
+
+So instead of "each family will go to the shop 1 or shop 2 with the same probability" better use "half of families would go to shop 1 with the other half going to shop 2"
+
+</div>
+</div>
+
+<div class="" style="padding: 0 10px; box-sizing: border-box; position: absolute; left: 0%; top: 70%; height: 30%; width: 100%; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-end" align="left">
+
+https://habr.com/ru/companies/magnit/articles/717536/<!-- .element: style="font-size: 15px" -->
+</div>
+
+<div class="" style="position: absolute; left: 0%; top: 95%; height: 5%; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center" >
+
+© 2025 Балтыжакова Т.И.<!-- .element: style="font-size: 10px" -->
+</div>
+</div></script></section><section  data-markdown><script type="text/template"><!-- .slide: class="drop" -->
+<div class="" style="position: absolute; left: 0px; top: 0px; height: 700px; width: 960px; min-height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center" absolute="true">
+
+# Additional sources<!-- .element: style="font-size: 30px" -->
+
+<div class="block">
+
+1. Haynes, K.E., & Fotheringham, A.S. (1985). Gravity and Spatial Interaction Models. Reprint. Edited by Grant Ian Thrall. WVU Research Repository, 2020. - URL: [https://researchrepository.wvu.edu/cgi/viewcontent.cgi?article=1010&context=rri-web-book](https://researchrepository.wvu.edu/cgi/viewcontent.cgi?article=1010&context=rri-web-book)
+2. Sam Marshall **Gravity Model of Spatial Interaction in QGIS.** - URL: [https://gsmarshall.github.io/gravity/gravity.html](https://gsmarshall.github.io/gravity/gravity.html)
+3. **Как мы используем модель Хаффа для открытия новых магазинов.** - URL: [https://habr.com/ru/companies/magnit/articles/717536/](https://habr.com/ru/companies/magnit/articles/717536/)
+4. Steven J. Anderson, John X. Volker, Michael D. Phillips **Converse’s Breaking-Point Model Revised** - URL: [https://www.aabri.com/manuscripts/09219.pdf](https://www.aabri.com/manuscripts/09219.pdf)
+5. **Huff Gravity Model: Store Customer Predictions** - URL: [https://gisgeography.com/huff-gravity-model/](https://gisgeography.com/huff-gravity-model/)
+6. First law of geography [https://www.geographyrealm.com/toblers-first-law-geography/](https://www.geographyrealm.com/toblers-first-law-geography/)
+7. Distance decay [https://www.geographyrealm.com/distance-decay-in-geography/](https://www.geographyrealm.com/distance-decay-in-geography/) additional reading [https://gisgeography.com/distance-decay/](https://gisgeography.com/distance-decay/)
+8. Trade area models [https://gis.jackforsyth.com/](https://gis.jackforsyth.com/)
+</div>
+
+ <!-- .element: style="font-size: 25px" -->
+</div></script></section></div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script src="plugin/zoom/zoom.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/math/math.js"></script>
+	<script src="plugin/mermaid/mermaid.js"></script>
+	<script src="plugin/chart/chart.min.js"></script>
+	<script src="plugin/chart/plugin.js"></script>
+	<script src="plugin/customcontrols/plugin.js"></script>
+	<script src="plugin/reveal-pointer/pointer.js"></script>
+
+    <script>
+      function extend() {
+        var target = {};
+        for (var i = 0; i < arguments.length; i++) {
+          var source = arguments[i];
+          for (var key in source) {
+            if (source.hasOwnProperty(key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      }
+
+	  function isLight(color) {
+		let hex = color.replace('#', '');
+
+		// convert #fff => #ffffff
+		if(hex.length == 3){
+			hex = `${hex[0]}${hex[0]}${hex[1]}${hex[1]}${hex[2]}${hex[2]}`;
+		}
+
+		const c_r = parseInt(hex.substr(0, 2), 16);
+		const c_g = parseInt(hex.substr(2, 2), 16);
+		const c_b = parseInt(hex.substr(4, 2), 16);
+		const brightness = ((c_r * 299) + (c_g * 587) + (c_b * 114)) / 1000;
+		return brightness > 155;
+	}
+
+	var bgColor = getComputedStyle(document.documentElement).getPropertyValue('--r-background-color').trim();
+	var isLight = isLight(bgColor);
+
+	if(isLight){
+		document.body.classList.add('has-light-background');
+	} else {
+		document.body.classList.add('has-dark-background');
+	}
+
+      // default options to init reveal.js
+      var defaultOptions = {
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        plugins: [
+          RevealMarkdown,
+          RevealHighlight,
+          RevealZoom,
+          RevealNotes,
+          RevealMath.MathJax3,
+		  RevealMermaid,
+		  RevealChart,
+		  RevealCustomControls,
+	      RevealPointer,
+        ],
+
+
+    	allottedTime: 120 * 1000,
+
+		mathjax3: {
+			mathjax: 'plugin/math/mathjax/tex-mml-chtml.js',
+		},
+		markdown: {
+		  gfm: true,
+		  mangle: true,
+		  pedantic: false,
+		  smartLists: false,
+		  smartypants: false,
+		},
+
+		mermaid: {
+			theme: isLight ? 'default' : 'dark',
+		},
+
+		customcontrols: {
+			controls: [
+			]
+		},
+      };
+
+      // options from URL query string
+      var queryOptions = Reveal().getQueryHash() || {};
+
+      var options = extend(defaultOptions, {"width":960,"height":700,"margin":0.04,"controls":true,"progress":true,"slideNumber":true,"transition":"none","transitionSpeed":"default"}, queryOptions);
+    </script>
+
+    <script>
+      Reveal.initialize(options);
+    </script>
+  </body>
+
+  <!-- created with Advanced Slides -->
+</html>
